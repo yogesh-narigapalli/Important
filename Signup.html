@@ -1,0 +1,61 @@
+<div class="log">
+    <div>
+        <h2 class="aud" > Audience Platform </h2>
+        <p class="aud">Please complete to create your account.</p>
+      </div>
+      <hr />
+      <div >
+        <form #f="ngForm">
+        <div>
+      
+          <mat-form-field class="w-100 " appearance="outline">
+              <mat-label>Enter your username</mat-label>
+              <input name="userName" matInput [(ngModel)]="user.userName"
+                 required [formControl]="userName">
+                 <mat-error *ngIf="userName.invalid">{{getErrorUser()}}</mat-error>
+               
+          </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field class="w-100" appearance="outline">
+                <mat-label>Enter your company name</mat-label>
+                <input name="companyName" matInput [(ngModel)]="user.companyname"
+                   required [formControl]="companyName">
+                   <mat-error *ngIf="companyName.invalid">{{getErrorCompany()}}</mat-error>
+            </mat-form-field>
+          </div>
+          <div>
+              <mat-form-field class="w-100" appearance="outline">
+                  <mat-label>Enter your email</mat-label>
+                  <input name="email" matInput [(ngModel)]="user.email"
+                     required [formControl]="email">
+                     <mat-error *ngIf="email.invalid">{{getErrorEmail()}}</mat-error>
+              </mat-form-field>
+            </div>
+            <div>
+                <mat-form-field class="w-100" appearance="outline">
+                    <mat-label>Enter your password</mat-label>
+                    <input name="password" matInput [(ngModel)]="user.password" #passwordField="ngModel" minlength="6"
+                       required>
+                       <mat-error *ngIf="passwordField.touched && passwordField.value.length !==0 && passwordField.value.length !==6">Length must be at least 6 characters</mat-error>
+                       <mat-error *ngIf="passwordField.touched && passwordField.value.length ==0"> You must enter the password </mat-error>
+                </mat-form-field>
+              </div>
+              <div>
+                  <mat-form-field class="w-100" appearance="outline">
+                      <mat-label>Confirm your password</mat-label>
+                      <input name="confirmPassword" #cpwd = "ngModel" matInput pattern="{{passwordField.value}}" [(ngModel)]="user.cpassword"
+                         required >
+                         <mat-error *ngIf="cpwd.invalid && cpwd.touched">Passwords do not match</mat-error>
+                  </mat-form-field>
+                  
+                  
+                  
+
+                </div>
+              </form>
+
+      
+          
+         
+        </div>
